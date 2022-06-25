@@ -61,7 +61,6 @@ def getRoutes(request):
     return Response(routes)
 
 @api_view(['GET', 'POST'])
-@permission_classes([IsAuthenticated])
 def getNotes(request):
     if request.method == 'GET':
         return getNotesList(request)
@@ -70,7 +69,6 @@ def getNotes(request):
         return createNote(request)
 
 @api_view(['GET', 'PUT', 'DELETE'])
-@permission_classes([IsAuthenticated])
 def getNote(request, pk):
     if request.method == 'GET':
         return getNoteDetail(request, pk)
