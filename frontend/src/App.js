@@ -1,10 +1,10 @@
-import './App.css';
 import {
   HashRouter as Router,
   Routes,
   Route
-} from 'react-router-dom'
-import { AuthProvider } from './context/AuthContext'
+} from "react-router-dom";
+import './App.css';
+import { AuthProvider } from "./context/AuthContext";
 import Header from './elements/Header'
 import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
@@ -13,15 +13,15 @@ import PrivateRoute from './utils/PrivateRoute'
 
 function App() {
   return (
-    <div className="container dark">
-      <div className="App">
-        <Router>
+    <Router>
+      <div className="container dark">
+        <div className="app">
           <AuthProvider>
             <Header />
             <Routes>
-              <Route 
-                path="/"
-                element = {
+              <Route
+                path="/" exact
+                element={
                   <PrivateRoute>
                     <HomePage />
                   </PrivateRoute>
@@ -29,7 +29,7 @@ function App() {
               />
               <Route
                 path="/note/:noteID/"
-                element = {
+                element={
                   <PrivateRoute>
                     <SingleNote />
                   </PrivateRoute>
@@ -38,10 +38,10 @@ function App() {
               <Route path="/login" element={<LoginPage />} />
             </Routes>
           </AuthProvider>
-        </Router>
+        </div>
       </div>
-    </div>
+    </Router>
   );
 }
 
-export default App
+export default App;
